@@ -7,7 +7,7 @@ import path from 'node:path';
 
 const root=fileURLToPath(new URL('.',import.meta.url));
 const archive=await readFile(path.join(root,'robinson-source.json.gz'));
-if(createHash('sha256').update(archive).digest('hex')!=='17a151bbe7db39c7b5039ae1b1b02bc18f41518de9fd5c4b53706161f580898a')
+if(createHash('sha256').update(archive).digest('hex')!=='cc1763ec0b0e606a61f2d68cc5de14f26416025a34020cc8a5352d63505acef1')
     throw new Error('Källpaketet matchar inte build.mjs. Ladda upp alla fyra filer från samma ZIP-paket.');
 const source=JSON.parse(gunzipSync(archive,{maxOutputLength:32*1024*1024}).toString('utf8'));
 if(source.format!==1||!source.files||Object.keys(source.files).length>1000)
